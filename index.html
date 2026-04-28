@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Morning Briefing — Tuesday, 28 April 2026</title>
+<title>Morning Briefing — Wednesday, 29 April 2026</title>
 <style>
   :root {
     --red: #ef4444; --red-bg: #fef2f2; --red-border: #fecaca;
@@ -18,688 +18,562 @@
     --surface: #ffffff; --bg: #f3f4f6;
     --radius: 12px; --radius-sm: 8px;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
 
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-  }
-
-  .container {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 24px 48px;
-  }
-
-  /* ─── HEADER ─── */
+  /* HEADER */
   .header {
-    position: relative;
     background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
-    color: white;
-    padding: 40px 48px;
-    margin: 0 -24px 32px;
-    overflow: hidden;
+    color: white; padding: 40px 48px; position: relative; overflow: hidden;
   }
   .header::before {
-    content: '';
-    position: absolute;
-    width: 400px; height: 400px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.04);
-    top: -120px; right: -80px;
+    content: ''; position: absolute; top: -60px; right: -60px;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: rgba(255,255,255,0.05);
   }
   .header::after {
-    content: '';
-    position: absolute;
-    width: 250px; height: 250px;
-    border-radius: 50%;
+    content: ''; position: absolute; bottom: -80px; right: 120px;
+    width: 200px; height: 200px; border-radius: 50%;
     background: rgba(255,255,255,0.04);
-    bottom: -80px; right: 200px;
   }
-  .header-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    position: relative; z-index: 1;
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; }
+  .header-left .date-line { font-size: 0.875rem; color: rgba(255,255,255,0.65); margin-bottom: 6px; letter-spacing: 0.02em; }
+  .header-left h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; }
+  .gen-pill {
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px; padding: 6px 14px; font-size: 0.75rem; color: rgba(255,255,255,0.8);
+    white-space: nowrap; align-self: flex-start;
   }
-  .header-date {
-    font-size: 13px;
-    color: rgba(255,255,255,0.65);
-    letter-spacing: 0.5px;
-    margin-bottom: 6px;
-  }
-  .header-title {
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    margin-bottom: 20px;
-  }
-  .header-pill {
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 20px;
-    padding: 6px 14px;
-    font-size: 12px;
-    color: rgba(255,255,255,0.8);
-    white-space: nowrap;
-  }
-  .header-motivation {
-    position: relative; z-index: 1;
-    border-left: 3px solid rgba(255,255,255,0.35);
-    padding-left: 16px;
-    font-size: 15px;
-    color: rgba(255,255,255,0.85);
-    line-height: 1.6;
-    max-width: 700px;
+  .motivational {
+    margin-top: 24px; padding-left: 16px;
+    border-left: 3px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.7;
   }
 
-  /* ─── CARDS ─── */
+  /* MAIN LAYOUT */
+  .main { max-width: 1440px; margin: 0 auto; padding: 28px 24px; }
+  .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  /* CARDS */
   .card {
-    background: var(--surface);
-    border-radius: var(--radius);
-    padding: 24px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-    margin-bottom: 24px;
+    background: var(--surface); border-radius: var(--radius);
+    border: 1px solid var(--gray-border); overflow: hidden;
   }
-  .card-title {
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--text-3);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  .card-header {
+    padding: 16px 20px 14px; border-bottom: 1px solid var(--gray-border);
+    display: flex; align-items: center; gap: 8px;
   }
+  .card-header h2 { font-size: 0.95rem; font-weight: 600; color: var(--text); }
+  .card-header .meta { font-size: 0.775rem; color: var(--text-3); margin-left: auto; }
+  .card-body { padding: 18px 20px; }
 
-  /* ─── TWO-COL LAYOUT ─── */
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-bottom: 24px;
+  /* SECTION B — COUNTDOWNS */
+  .countdown-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px;
+    padding: 18px 20px;
   }
-  .two-col .card { margin-bottom: 0; }
-
-  /* ─── EXAM COUNTDOWNS ─── */
-  .exam-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 16px;
+  .countdown-card {
+    border-radius: var(--radius-sm); padding: 14px 16px; border: 1px solid;
+    display: flex; flex-direction: column; gap: 4px;
   }
-  .exam-card {
-    border-radius: var(--radius-sm);
-    padding: 18px;
-    border: 1px solid;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .exam-card.red { background: var(--red-bg); border-color: var(--red-border); }
-  .exam-card.amber { background: var(--amber-bg); border-color: var(--amber-border); }
-  .exam-card.green { background: var(--green-bg); border-color: var(--green-border); }
-  .exam-days {
-    font-size: 42px;
-    font-weight: 800;
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-  .exam-card.red .exam-days { color: var(--red); }
-  .exam-card.amber .exam-days { color: var(--amber); }
-  .exam-card.green .exam-days { color: var(--green); }
-  .exam-label { font-size: 13px; color: var(--text-3); margin-bottom: 4px; }
-  .exam-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
-  .exam-datetime { font-size: 11px; color: var(--text-3); margin-bottom: 10px; }
+  .countdown-card.red { background: var(--red-bg); border-color: var(--red-border); }
+  .countdown-card.amber { background: var(--amber-bg); border-color: var(--amber-border); }
+  .countdown-card.green { background: var(--green-bg); border-color: var(--green-border); }
+  .countdown-days { font-size: 2rem; font-weight: 800; line-height: 1; }
+  .countdown-card.red .countdown-days { color: var(--red); }
+  .countdown-card.amber .countdown-days { color: var(--amber); }
+  .countdown-card.green .countdown-days { color: var(--green); }
+  .countdown-label { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+  .countdown-date { font-size: 0.72rem; color: var(--text-3); }
   .urgency-pill {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.05em;
+    padding: 2px 7px; border-radius: 10px; margin-top: 6px; width: fit-content;
   }
-  .urgency-pill.tomorrow { background: var(--red); color: white; }
-  .urgency-pill.this-week { background: var(--amber); color: white; }
-  .urgency-pill.coming-up { background: var(--blue); color: white; }
-  .urgency-pill.on-track { background: var(--green); color: white; }
+  .urgency-pill.red { background: var(--red); color: white; }
+  .urgency-pill.amber { background: var(--amber); color: white; }
+  .urgency-pill.green { background: var(--green); color: white; }
 
-  /* ─── TIMELINE ─── */
-  .timeline {
-    display: grid;
-    grid-template-columns: 70px 1fr;
-    gap: 0 12px;
-    position: relative;
-  }
+  /* SECTION C — TODAY'S SCHEDULE */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-row { display: grid; grid-template-columns: 80px 1fr; gap: 0; align-items: stretch; }
   .timeline-time {
-    font-size: 12px;
-    color: var(--text-3);
-    text-align: right;
-    padding-top: 3px;
-    font-variant-numeric: tabular-nums;
+    font-size: 0.72rem; color: var(--text-3); padding: 10px 12px 10px 0;
+    text-align: right; border-right: 2px solid var(--gray-border); display: flex; align-items: center; justify-content: flex-end;
   }
-  .timeline-event {
-    position: relative;
-    padding: 6px 12px;
-    border-radius: var(--radius-sm);
-    margin-bottom: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    min-height: 36px;
+  .timeline-event-wrap { padding: 6px 0 6px 14px; display: flex; align-items: center; gap: 10px; }
+  .timeline-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .timeline-dot.blue { background: var(--blue); }
+  .timeline-dot.amber { background: var(--amber); }
+  .timeline-dot.red { background: var(--red); }
+  .timeline-dot.purple { background: var(--purple); }
+  .event-bar {
+    flex: 1; padding: 7px 12px; border-radius: var(--radius-sm);
+    font-size: 0.82rem; font-weight: 500;
   }
-  .timeline-event::before {
-    content: '';
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
+  .event-bar.blue { background: var(--blue-bg); color: #1d4ed8; border-left: 3px solid var(--blue); }
+  .event-bar.amber { background: var(--amber-bg); color: #b45309; border-left: 3px solid var(--amber); }
+  .event-bar.red { background: var(--red-bg); color: #b91c1c; border-left: 3px solid var(--red); }
+  .event-bar.purple { background: var(--purple-bg); color: #6d28d9; border-left: 3px solid var(--purple); }
+  .event-bar.gray { background: var(--gray-bg); color: var(--text-3); border-left: 3px solid #d1d5db; }
+  .schedule-summary {
+    margin-top: 14px; background: var(--blue-bg); border: 1px solid var(--blue-border);
+    border-radius: var(--radius-sm); padding: 10px 14px; font-size: 0.82rem; color: #1d4ed8;
   }
-  .timeline-event.blue { background: var(--blue-bg); }
-  .timeline-event.blue::before { background: var(--blue); }
-  .timeline-event.amber { background: var(--amber-bg); }
-  .timeline-event.amber::before { background: var(--amber); }
-  .timeline-event.red { background: var(--red-bg); }
-  .timeline-event.red::before { background: var(--red); }
-  .timeline-event.purple { background: var(--purple-bg); }
-  .timeline-event.purple::before { background: var(--purple); }
-  .timeline-empty {
-    grid-column: 1 / -1;
-    text-align: center;
-    color: var(--text-3);
-    font-size: 13px;
-    padding: 24px;
-    background: var(--gray-bg);
-    border-radius: var(--radius-sm);
-    border: 1px dashed var(--gray-border);
+  .no-events {
+    text-align: center; padding: 24px; color: var(--text-3); font-size: 0.85rem;
   }
-  .study-summary {
-    grid-column: 1 / -1;
-    background: var(--blue-bg);
-    border: 1px solid var(--blue-border);
-    border-radius: var(--radius-sm);
-    padding: 12px 16px;
-    font-size: 13px;
-    color: var(--blue);
-    font-weight: 500;
-    margin-top: 8px;
-  }
+  .no-events .emoji { font-size: 2rem; display: block; margin-bottom: 8px; }
 
-  /* ─── TASK SUMMARY ─── */
-  .task-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
+  /* SECTION D — TASKS */
+  .task-meta-line {
+    font-size: 0.78rem; color: var(--text-3); padding: 10px 20px 0;
+    display: flex; gap: 14px; flex-wrap: wrap;
   }
-  .task-meta-chip {
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 12px;
-    border-radius: 20px;
-    border: 1px solid;
-  }
-  .task-meta-chip.red { background: var(--red-bg); border-color: var(--red-border); color: var(--red); }
-  .task-meta-chip.amber { background: var(--amber-bg); border-color: var(--amber-border); color: var(--amber); }
-  .task-meta-chip.blue { background: var(--blue-bg); border-color: var(--blue-border); color: var(--blue); }
-  .task-meta-chip.gray { background: var(--gray-bg); border-color: var(--gray-border); color: var(--gray); }
-
-  .task-group { margin-bottom: 20px; }
-  .task-group-title {
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--text-2);
-    padding-bottom: 8px;
+  .task-meta-line span { white-space: nowrap; }
+  .task-meta-line .overdue-count { color: var(--red); font-weight: 600; }
+  .task-group { padding: 14px 20px 0; }
+  .task-group-title { font-size: 0.82rem; font-weight: 700; color: var(--text-2); margin-bottom: 10px; }
+  .task-subsection { margin-bottom: 12px; }
+  .task-subsection-title {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--text-3); margin-bottom: 6px; padding-bottom: 4px;
     border-bottom: 1px solid var(--gray-border);
-    margin-bottom: 10px;
-  }
-  .task-section-label {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text-3);
-    margin: 10px 0 6px;
   }
   .task-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 7px 10px;
-    border-radius: var(--radius-sm);
-    background: var(--gray-bg);
-    margin-bottom: 4px;
-    gap: 8px;
+    display: flex; align-items: center; gap: 8px; padding: 6px 8px;
+    border-radius: 6px; font-size: 0.8rem; color: var(--text-2);
+    transition: background 0.15s;
   }
-  .task-row:hover { background: #f0f0f4; }
-  .task-name {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-    flex: 1;
-    min-width: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .task-row:hover { background: var(--gray-bg); }
+  .task-name { flex: 1; font-weight: 500; }
+  .priority-badge, .status-badge {
+    font-size: 0.65rem; font-weight: 700; padding: 2px 7px; border-radius: 10px; white-space: nowrap;
   }
-  .task-badges { display: flex; gap: 5px; flex-shrink: 0; }
-  .badge {
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 20px;
-    white-space: nowrap;
-  }
-  .badge.priority-high { background: var(--red-bg); color: var(--red); }
-  .badge.priority-medium { background: var(--amber-bg); color: var(--amber); }
-  .badge.priority-low { background: var(--green-bg); color: var(--green); }
-  .badge.status-not-started { background: var(--gray-bg); color: var(--gray); border: 1px solid var(--gray-border); }
-  .badge.status-in-progress { background: var(--teal-bg); color: var(--teal); }
-  .badge.status-postponed { background: var(--amber-bg); color: var(--amber); }
+  .priority-badge.high { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+  .priority-badge.medium { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+  .priority-badge.low { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .status-badge.not-started { background: var(--gray-bg); color: var(--gray); border: 1px solid var(--gray-border); }
+  .status-badge.in-progress { background: var(--teal-bg); color: var(--teal); border: 1px solid var(--teal-border); }
+  .status-badge.postponed { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
   .all-clear {
-    background: var(--green-bg);
-    border: 1px solid var(--green-border);
-    color: var(--green);
-    border-radius: var(--radius-sm);
-    padding: 8px 12px;
-    font-size: 12px;
-    font-weight: 600;
+    background: var(--green-bg); border: 1px solid var(--green-border);
+    border-radius: 6px; padding: 8px 12px; font-size: 0.78rem;
+    color: #065f46; font-weight: 500; display: flex; align-items: center; gap: 6px;
+  }
+  .overdue-tag {
+    font-size: 0.62rem; background: var(--red-bg); color: var(--red);
+    border: 1px solid var(--red-border); border-radius: 10px; padding: 1px 6px;
+    font-weight: 700;
   }
 
-  /* ─── WEEKLY OVERVIEW ─── */
+  /* SECTION E — WEEKLY OVERVIEW */
   .week-strip {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 8px;
-    margin-bottom: 16px;
+    display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px;
+    padding: 16px 20px;
   }
   .day-cell {
-    border-radius: var(--radius-sm);
-    padding: 12px 8px;
-    text-align: center;
-    border: 1px solid var(--gray-border);
-    background: var(--gray-bg);
+    border-radius: var(--radius-sm); padding: 10px 8px; text-align: center;
+    border: 1px solid var(--gray-border); background: var(--gray-bg);
     transition: all 0.15s;
   }
   .day-cell.today {
-    border: 2px solid var(--indigo);
-    background: var(--indigo-bg);
+    border: 2px solid var(--indigo); background: var(--indigo-bg);
   }
   .day-cell.past { opacity: 0.55; }
-  .day-name {
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--text-3);
-    margin-bottom: 4px;
-  }
-  .day-date {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 6px;
-  }
+  .day-name { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); }
+  .day-date { font-size: 1.1rem; font-weight: 700; color: var(--text); margin: 3px 0; }
   .day-cell.today .day-date { color: var(--indigo); }
-  .day-dots {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3px;
-    justify-content: center;
-    min-height: 14px;
-    margin-bottom: 4px;
-  }
-  .day-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-  }
+  .day-dots { display: flex; justify-content: center; gap: 3px; margin: 4px 0; flex-wrap: wrap; }
+  .day-dot { width: 7px; height: 7px; border-radius: 50%; }
   .day-dot.amber { background: var(--amber); }
   .day-dot.blue { background: var(--blue); }
   .day-dot.red { background: var(--red); }
   .day-dot.purple { background: var(--purple); }
-  .day-hours {
-    font-size: 10px;
-    color: var(--text-3);
-  }
+  .study-hrs { font-size: 0.65rem; color: var(--text-3); }
   .week-summary {
-    background: var(--purple-bg);
-    border: 1px solid var(--purple-border);
-    border-radius: var(--radius-sm);
-    padding: 12px 16px;
-    font-size: 13px;
-    color: var(--purple);
-    font-weight: 500;
-    margin-bottom: 12px;
+    margin: 4px 20px 16px; background: var(--purple-bg); border: 1px solid var(--purple-border);
+    border-radius: var(--radius-sm); padding: 10px 14px; font-size: 0.82rem; color: #5b21b6;
   }
-  .week-legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
+  .legend {
+    display: flex; gap: 14px; flex-wrap: wrap; padding: 0 20px 16px; font-size: 0.75rem; color: var(--text-3);
   }
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 11px;
-    color: var(--text-3);
-  }
-  .legend-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-  }
+  .legend-item { display: flex; align-items: center; gap: 5px; }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
 
-  /* ─── SCHEDULE REVIEW ─── */
-  .review-card {
+  /* SECTION F — FOOTER */
+  .footer-card {
     background: linear-gradient(135deg, #ecfdf5, #d1fae5);
-    border: 1px solid #a7f3d0;
-    border-radius: var(--radius);
-    padding: 24px;
-    margin-bottom: 24px;
+    border: 1px solid var(--green-border); border-radius: var(--radius);
+    padding: 24px 28px; margin-top: 20px;
   }
-  .review-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: #065f46;
-    margin-bottom: 8px;
-  }
-  .review-context {
-    font-size: 13px;
-    color: #047857;
-    margin-bottom: 20px;
-    line-height: 1.6;
-  }
-  .checkbox-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 0;
-    border-bottom: 1px solid #a7f3d0;
-    cursor: pointer;
-  }
-  .checkbox-row:last-child { border-bottom: none; }
-  .checkbox-row input[type="checkbox"] {
-    width: 18px; height: 18px;
-    accent-color: var(--green);
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-  .checkbox-label {
-    font-size: 14px;
-    color: #065f46;
-    font-weight: 500;
-  }
+  .footer-card h2 { font-size: 1.05rem; font-weight: 700; color: #065f46; margin-bottom: 8px; }
+  .footer-context { font-size: 0.85rem; color: #047857; margin-bottom: 18px; line-height: 1.6; }
+  .checklist { display: flex; flex-direction: column; gap: 10px; }
+  .checklist-item { display: flex; align-items: center; gap: 10px; }
+  .checklist-item input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; accent-color: var(--green); }
+  .checklist-item label { font-size: 0.85rem; color: #065f46; cursor: pointer; }
 
-  /* ─── RESPONSIVE ─── */
+  /* RESPONSIVE */
   @media (max-width: 900px) {
-    .two-col { grid-template-columns: 1fr; }
+    .grid-2col { grid-template-columns: 1fr; }
     .week-strip { grid-template-columns: repeat(4, 1fr); }
-    .exam-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
   }
   @media (max-width: 600px) {
     .header { padding: 24px 20px; }
-    .header-title { font-size: 24px; }
-    .container { padding: 0 12px 32px; }
-    .week-strip { grid-template-columns: repeat(4, 1fr); }
+    .header-left h1 { font-size: 1.5rem; }
+    .main { padding: 16px 12px; }
+    .week-strip { grid-template-columns: repeat(4, 1fr); gap: 5px; }
+    .countdown-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
   }
+
+  /* UTILS */
+  .mb-20 { margin-bottom: 20px; }
+  .section-spacer { height: 20px; }
+  .divider { border: none; border-top: 1px solid var(--gray-border); margin: 6px 0; }
 </style>
 </head>
 <body>
 
-<!-- ─── HEADER ─── -->
+<!-- ===== SECTION A: HEADER ===== -->
 <div class="header">
   <div class="header-top">
-    <div>
-      <div class="header-date">🌅 Tuesday, 28 April 2026 · Malaysia Time (UTC+8)</div>
-      <div class="header-title">Good morning, Koala.</div>
+    <div class="header-left">
+      <div class="date-line">🌅 &nbsp;Wednesday, 29 April 2026 &nbsp;·&nbsp; Malaysia Time (UTC+8)</div>
+      <h1>Good morning, Koala.</h1>
     </div>
-    <div class="header-pill">Generated 7:00 AM · MYT</div>
+    <div class="gen-pill">Generated 7:00 AM · MYT</div>
   </div>
-  <div class="header-motivation">
-    Today's the day to close the gap — you've got 3 overdue tasks from yesterday and a Communication presentation due right now. Don't let the pile grow bigger: knock out the PSA homework and Comm E-learning first, then lock in your presentation before the day runs away from you. The deadline is today — make it count.
-  </div>
-</div>
-
-<div class="container">
-
-<!-- ─── EXAM COUNTDOWNS ─── -->
-<div class="card">
-  <div class="card-title">🎯 Exam &amp; Event Countdowns</div>
-  <div class="exam-grid">
-    <div class="exam-card green">
-      <div class="exam-label">days remaining</div>
-      <div class="exam-days">117</div>
-      <div class="exam-name">ABU ROBOCON 2026</div>
-      <div class="exam-datetime">Sun, 23 Aug 2026</div>
-      <span class="urgency-pill on-track">ON TRACK</span>
-    </div>
-    <div class="exam-card amber" style="background:#fffbeb; border-color:#fde68a; display:flex; flex-direction:column; justify-content:center; align-items:center; opacity:0.7;">
-      <div style="font-size:28px; margin-bottom:8px;">📅</div>
-      <div style="font-size:13px; color:var(--text-3); text-align:center;">No upcoming tests or exams in the next 7 days found in Calendar</div>
-    </div>
+  <div class="motivational">
+    Four academic tasks have slipped past their deadlines — and every extra day makes the pile heavier.
+    Today is the day to clear them: start with Revision CSD (it's highest-priority and most overdue), then work through Communication Presentation, PSA Homework, and Comm E-learning before the evening.
+    Robocon's Programming Phase is live through May 4 — lock in the academics now so you can focus fully on Arena Detection Code tonight.
   </div>
 </div>
 
-<!-- ─── TODAY + TASKS ─── -->
-<div class="two-col">
+<div class="main">
 
-  <!-- TODAY'S SCHEDULE -->
-  <div class="card">
-    <div class="card-title">📅 Today's Schedule</div>
-    <div class="timeline">
-      <div class="timeline-empty">
-        No specific class or study blocks found in the Calendar for today.<br>
-        <span style="font-size:11px; margin-top:4px; display:block;">Add events to your Notion Calendar to see them here.</span>
-      </div>
+  <!-- ===== SECTION B: COUNTDOWNS ===== -->
+  <div class="card mb-20">
+    <div class="card-header">
+      <h2>🚨 Robocon Milestones</h2>
+      <span class="meta">Countdown from today, Wed 29 Apr 2026</span>
     </div>
-    <div style="margin-top:16px; background: var(--blue-bg); border: 1px solid var(--blue-border); border-radius: var(--radius-sm); padding: 12px 16px; font-size: 13px; color: var(--blue); font-weight: 500;">
-      📚 0h study hours blocked today · No study day planned — consider time-blocking your sessions!
-    </div>
-  </div>
-
-  <!-- TASK SUMMARY -->
-  <div class="card">
-    <div class="card-title">✅ Task Summary</div>
-    <div class="task-meta">
-      <div class="task-meta-chip red">3 overdue</div>
-      <div class="task-meta-chip amber">1 due today</div>
-      <div class="task-meta-chip blue">0 due this week</div>
-      <div class="task-meta-chip gray">6 active (no date)</div>
-    </div>
-
-    <!-- STUDIES & ACADEMICS -->
-    <div class="task-group">
-      <div class="task-group-title">📚 Studies &amp; Academics</div>
-
-      <div class="task-section-label">⚠️ Overdue</div>
-      <div class="task-row">
-        <span class="task-name">PSA homework</span>
-        <span class="task-badges">
-          <span class="badge status-not-started">Not started</span>
-        </span>
+    <div class="countdown-grid">
+      <div class="countdown-card red">
+        <div class="countdown-days">6</div>
+        <div class="countdown-label">T&amp;T Phase</div>
+        <div class="countdown-date">Tue 5 May → Sat 16 May</div>
+        <span class="urgency-pill red">THIS WEEK</span>
       </div>
-      <div class="task-row">
-        <span class="task-name">Communication homework E-learning</span>
-        <span class="task-badges">
-          <span class="badge status-not-started">Not started</span>
-        </span>
+      <div class="countdown-card amber">
+        <div class="countdown-days">5</div>
+        <div class="countdown-label">Programming Phase End</div>
+        <div class="countdown-date">Active → Mon 4 May 2026</div>
+        <span class="urgency-pill amber">ACTIVE NOW</span>
       </div>
-      <div class="task-row">
-        <span class="task-name">Revision CSD</span>
-        <span class="task-badges">
-          <span class="badge priority-high">High</span>
-          <span class="badge status-not-started">Not started</span>
-        </span>
+      <div class="countdown-card amber">
+        <div class="countdown-days">18</div>
+        <div class="countdown-label">DEMO 5</div>
+        <div class="countdown-date">Sun 17 May 2026</div>
+        <span class="urgency-pill amber">COMING UP</span>
       </div>
-
-      <div class="task-section-label">📌 Due Today</div>
-      <div class="task-row">
-        <span class="task-name">Communication presentation</span>
-        <span class="task-badges">
-          <span class="badge status-not-started">Not started</span>
-        </span>
-      </div>
-
-      <div class="task-section-label">📅 Due This Week</div>
-      <div class="all-clear">✓ All clear</div>
-
-      <div class="task-section-label">🗂️ Active (No Date)</div>
-      <div class="task-row">
-        <span class="task-name">English assignment</span>
-        <span class="task-badges">
-          <span class="badge priority-high">High</span>
-          <span class="badge status-not-started">Not started</span>
-        </span>
-      </div>
-      <div class="task-row">
-        <span class="task-name">Entrepreneurship video</span>
-        <span class="task-badges">
-          <span class="badge status-postponed">Postponed</span>
-        </span>
-      </div>
-      <div class="task-row">
-        <span class="task-name">Image processing course</span>
-        <span class="task-badges">
-          <span class="badge priority-low">Low</span>
-          <span class="badge status-postponed">Postponed</span>
-        </span>
-      </div>
-    </div>
-
-    <!-- ROBOCON R2 -->
-    <div class="task-group">
-      <div class="task-group-title">🤖 Robocon R2</div>
-
-      <div class="task-section-label">⚠️ Overdue</div>
-      <div class="all-clear">✓ All clear</div>
-
-      <div class="task-section-label">📌 Due Today</div>
-      <div class="all-clear">✓ All clear</div>
-
-      <div class="task-section-label">📅 Due This Week</div>
-      <div class="all-clear">✓ All clear</div>
-
-      <div class="task-section-label">🗂️ Active (No Date)</div>
-      <div class="task-row">
-        <span class="task-name">Arena Detection Code</span>
-        <span class="task-badges">
-          <span class="badge priority-high">High</span>
-          <span class="badge status-in-progress">In progress</span>
-        </span>
-      </div>
-      <div class="task-row">
-        <span class="task-name">Changing code into HSM</span>
-        <span class="task-badges">
-          <span class="badge priority-low">Low</span>
-          <span class="badge status-postponed">Postponed</span>
-        </span>
-      </div>
-      <div class="task-row">
-        <span class="task-name">Lidar_Camera calibration</span>
-        <span class="task-badges">
-          <span class="badge priority-low">Low</span>
-          <span class="badge status-postponed">Postponed</span>
-        </span>
+      <div class="countdown-card green">
+        <div class="countdown-days">116</div>
+        <div class="countdown-label">ABU ROBOCON 2026</div>
+        <div class="countdown-date">Sun 23 Aug 2026</div>
+        <span class="urgency-pill green">ON TRACK</span>
       </div>
     </div>
   </div>
 
-</div><!-- .two-col -->
+  <!-- ===== SECTIONS C + D: SCHEDULE + TASKS ===== -->
+  <div class="grid-2col mb-20">
 
-<!-- ─── WEEKLY OVERVIEW ─── -->
-<div class="card">
-  <div class="card-title">📆 Weekly Overview — Apr 27 – May 3, 2026</div>
-  <div class="week-strip">
-    <!-- Mon Apr 27 (past) -->
-    <div class="day-cell past">
-      <div class="day-name">Mon</div>
-      <div class="day-date">27</div>
-      <div class="day-dots"></div>
-      <div class="day-hours">—</div>
-    </div>
-    <!-- Tue Apr 28 (TODAY) -->
-    <div class="day-cell today">
-      <div class="day-name">Tue</div>
-      <div class="day-date">28</div>
-      <div class="day-dots">
-        <div class="day-dot amber" title="Task due today"></div>
+    <!-- SECTION C: TODAY'S SCHEDULE -->
+    <div class="card">
+      <div class="card-header">
+        <h2>📅 Today's Schedule</h2>
+        <span class="meta">Wed 29 Apr 2026</span>
       </div>
-      <div class="day-hours">0h study</div>
+      <div class="card-body">
+        <div class="timeline">
+          <div class="timeline-row">
+            <div class="timeline-time">All day</div>
+            <div class="timeline-event-wrap">
+              <div class="timeline-dot purple"></div>
+              <div class="event-bar purple">🤖 Robocon: Programming Phase (active all week)</div>
+            </div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-time">Morning</div>
+            <div class="timeline-event-wrap">
+              <div class="timeline-dot blue"></div>
+              <div class="event-bar blue">📖 Recommended: Revision CSD (High priority, 2 days overdue)</div>
+            </div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-time">Midday</div>
+            <div class="timeline-event-wrap">
+              <div class="timeline-dot blue"></div>
+              <div class="event-bar blue">📝 Communication Presentation (1 day overdue — clear today)</div>
+            </div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-time">Afternoon</div>
+            <div class="timeline-event-wrap">
+              <div class="timeline-dot blue"></div>
+              <div class="event-bar blue">📋 PSA Homework + Comm E-learning (both overdue, small effort)</div>
+            </div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-time">Evening</div>
+            <div class="timeline-event-wrap">
+              <div class="timeline-dot purple"></div>
+              <div class="event-bar purple">⚙️ Arena Detection Code — In progress (High, Robocon)</div>
+            </div>
+          </div>
+        </div>
+        <div class="schedule-summary">
+          📚 Self-directed day · No fixed class schedule in calendar · <strong>Heavy overdue clearing needed</strong> · T&amp;T in 6 days
+        </div>
+      </div>
     </div>
-    <!-- Wed Apr 29 -->
-    <div class="day-cell">
-      <div class="day-name">Wed</div>
-      <div class="day-date">29</div>
-      <div class="day-dots"></div>
-      <div class="day-hours">—</div>
-    </div>
-    <!-- Thu Apr 30 -->
-    <div class="day-cell">
-      <div class="day-name">Thu</div>
-      <div class="day-date">30</div>
-      <div class="day-dots"></div>
-      <div class="day-hours">—</div>
-    </div>
-    <!-- Fri May 1 -->
-    <div class="day-cell">
-      <div class="day-name">Fri</div>
-      <div class="day-date">1</div>
-      <div class="day-hours">—</div>
-      <div class="day-dots"></div>
-    </div>
-    <!-- Sat May 2 -->
-    <div class="day-cell">
-      <div class="day-name">Sat</div>
-      <div class="day-date">2</div>
-      <div class="day-dots"></div>
-      <div class="day-hours">—</div>
-    </div>
-    <!-- Sun May 3 -->
-    <div class="day-cell">
-      <div class="day-name">Sun</div>
-      <div class="day-date">3</div>
-      <div class="day-dots"></div>
-      <div class="day-hours">—</div>
-    </div>
-  </div>
-  <div class="week-summary">
-    🗓️ Week of Apr 28 — 10 active tasks tracked · 1 deadline today · 3 overdue items to clear · ROBOCON in 117 days
-  </div>
-  <div class="week-legend">
-    <div class="legend-item"><div class="legend-dot amber"></div> Class</div>
-    <div class="legend-item"><div class="legend-dot blue"></div> Study</div>
-    <div class="legend-item"><div class="legend-dot red"></div> Test / Exam</div>
-    <div class="legend-item"><div class="legend-dot purple"></div> Robocon</div>
-  </div>
-</div>
 
-<!-- ─── SCHEDULE REVIEW ─── -->
-<div class="review-card">
-  <div class="review-title">🌿 Schedule Review</div>
-  <div class="review-context">
-    The Communication presentation is due today — make sure it's ready and submitted before you move on to anything else. You also have 3 overdue items from yesterday (PSA homework, Comm E-learning, Revision CSD) that need to be cleared today.
+    <!-- SECTION D: TASK SUMMARY -->
+    <div class="card">
+      <div class="card-header">
+        <h2>✅ Task Summary</h2>
+      </div>
+      <div class="task-meta-line">
+        <span class="overdue-count">⚠ 4 overdue</span>
+        <span>0 due today</span>
+        <span>0 due this week</span>
+        <span>6 active (no date)</span>
+      </div>
+
+      <!-- Studies & Academics -->
+      <div class="task-group">
+        <div class="task-group-title">📚 Studies &amp; Academics</div>
+
+        <div class="task-subsection">
+          <div class="task-subsection-title">Overdue</div>
+          <div class="task-row">
+            <div class="task-name">Revision CSD</div>
+            <span class="overdue-tag">2d overdue</span>
+            <span class="priority-badge high">High</span>
+            <span class="status-badge not-started">Not started</span>
+          </div>
+          <div class="task-row">
+            <div class="task-name">Communication Presentation</div>
+            <span class="overdue-tag">1d overdue</span>
+            <span class="status-badge not-started">Not started</span>
+          </div>
+          <div class="task-row">
+            <div class="task-name">PSA Homework</div>
+            <span class="overdue-tag">2d overdue</span>
+            <span class="status-badge not-started">Not started</span>
+          </div>
+          <div class="task-row">
+            <div class="task-name">Comm Homework E-learning</div>
+            <span class="overdue-tag">2d overdue</span>
+            <span class="status-badge not-started">Not started</span>
+          </div>
+        </div>
+
+        <div class="task-subsection">
+          <div class="task-subsection-title">Due Today</div>
+          <div class="all-clear">✓ All clear</div>
+        </div>
+
+        <div class="task-subsection">
+          <div class="task-subsection-title">Due This Week</div>
+          <div class="all-clear">✓ All clear</div>
+        </div>
+
+        <div class="task-subsection">
+          <div class="task-subsection-title">Active (No Date)</div>
+          <div class="task-row">
+            <div class="task-name">English Assignment</div>
+            <span class="priority-badge high">High</span>
+            <span class="status-badge not-started">Not started</span>
+          </div>
+          <div class="task-row">
+            <div class="task-name">Entrepreneurship Video</div>
+            <span class="status-badge postponed">Postponed</span>
+          </div>
+          <div class="task-row">
+            <div class="task-name">Image Processing Course</div>
+            <span class="priority-badge low">Low</span>
+            <span class="status-badge postponed">Postponed</span>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider" style="margin: 8px 20px;">
+
+      <!-- Robocon R2 -->
+      <div class="task-group" style="padding-bottom: 14px;">
+        <div class="task-group-title">🤖 Robocon R2</div>
+
+        <div class="task-subsection">
+          <div class="task-subsection-title">Overdue</div>
+          <div class="all-clear">✓ All clear</div>
+        </div>
+
+        <div class="task-subsection">
+          <div class="task-subsection-title">Due Today / This Week</div>
+          <div class="all-clear">✓ All clear</div>
+        </div>
+
+        <div class="task-subsection">
+          <div class="task-subsection-title">Active (No Date)</div>
+          <div class="task-row">
+            <div class="task-name">Arena Detection Code</div>
+            <span class="priority-badge high">High</span>
+            <span class="status-badge in-progress">In progress</span>
+          </div>
+          <div class="task-row">
+            <div class="task-name">Changing Code into HSM</div>
+            <span class="priority-badge low">Low</span>
+            <span class="status-badge postponed">Postponed</span>
+          </div>
+          <div class="task-row">
+            <div class="task-name">Lidar_Camera Calibration</div>
+            <span class="priority-badge low">Low</span>
+            <span class="status-badge postponed">Postponed</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <label class="checkbox-row">
-    <input type="checkbox"> <span class="checkbox-label">Reviewed today's schedule</span>
-  </label>
-  <label class="checkbox-row">
-    <input type="checkbox"> <span class="checkbox-label">Communication presentation is confirmed and ready to submit</span>
-  </label>
-  <label class="checkbox-row">
-    <input type="checkbox"> <span class="checkbox-label">Most important task (Revision CSD — High priority) is time-blocked</span>
-  </label>
-</div>
 
-<!-- FOOTER -->
-<div style="text-align:center; font-size:11px; color:var(--text-3); padding-top:8px;">
-  Generated by Claude · Tuesday, 28 April 2026 ·
-  <a href="https://www.notion.so/332e78d06753803ca0f2c5cbc89e35e5" style="color:var(--blue); text-decoration:none;">Tasks Tracker</a> ·
-  <a href="https://www.notion.so/32be78d067538052a2d1ecf99ba102d9" style="color:var(--blue); text-decoration:none;">Calendar</a>
-</div>
+  <!-- ===== SECTION E: WEEKLY OVERVIEW ===== -->
+  <div class="card mb-20">
+    <div class="card-header">
+      <h2>📆 Weekly Overview</h2>
+      <span class="meta">Week of 27 Apr – 3 May 2026</span>
+    </div>
+    <div class="week-strip">
+      <!-- Mon Apr 27 - past -->
+      <div class="day-cell past">
+        <div class="day-name">Mon</div>
+        <div class="day-date">27</div>
+        <div class="day-dots">
+          <div class="day-dot purple" title="Robocon: Programming Phase"></div>
+        </div>
+        <div class="study-hrs">0h</div>
+      </div>
+      <!-- Tue Apr 28 - past -->
+      <div class="day-cell past">
+        <div class="day-name">Tue</div>
+        <div class="day-date">28</div>
+        <div class="day-dots">
+          <div class="day-dot purple" title="Robocon: Programming Phase"></div>
+        </div>
+        <div class="study-hrs">0h</div>
+      </div>
+      <!-- Wed Apr 29 - TODAY -->
+      <div class="day-cell today">
+        <div class="day-name">Wed</div>
+        <div class="day-date">29</div>
+        <div class="day-dots">
+          <div class="day-dot purple" title="Robocon: Programming Phase"></div>
+          <div class="day-dot blue" title="Study day planned"></div>
+        </div>
+        <div class="study-hrs" style="color: var(--indigo); font-weight: 600;">Today</div>
+      </div>
+      <!-- Thu Apr 30 -->
+      <div class="day-cell">
+        <div class="day-name">Thu</div>
+        <div class="day-date">30</div>
+        <div class="day-dots">
+          <div class="day-dot purple" title="Robocon: Programming Phase"></div>
+        </div>
+        <div class="study-hrs">0h</div>
+      </div>
+      <!-- Fri May 1 -->
+      <div class="day-cell">
+        <div class="day-name">Fri</div>
+        <div class="day-date">1</div>
+        <div class="day-dots">
+          <div class="day-dot purple" title="Robocon: Programming Phase"></div>
+        </div>
+        <div class="study-hrs">0h</div>
+      </div>
+      <!-- Sat May 2 -->
+      <div class="day-cell">
+        <div class="day-name">Sat</div>
+        <div class="day-date">2</div>
+        <div class="day-dots">
+          <div class="day-dot purple" title="Robocon: Programming Phase"></div>
+        </div>
+        <div class="study-hrs">0h</div>
+      </div>
+      <!-- Sun May 3 -->
+      <div class="day-cell">
+        <div class="day-name">Sun</div>
+        <div class="day-date">3</div>
+        <div class="day-dots">
+          <div class="day-dot purple" title="Robocon: Programming Phase"></div>
+        </div>
+        <div class="study-hrs">0h</div>
+      </div>
+    </div>
 
-</div><!-- .container -->
+    <div class="week-summary">
+      🟣 Robocon Programming Phase runs all week (Apr 28 – May 4) &nbsp;·&nbsp;
+      T&amp;T kicks off next Tuesday (May 5) — finish overdue academics before then &nbsp;·&nbsp;
+      4 overdue academic tasks need clearing this week
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot amber"></div> Class/Uni</div>
+      <div class="legend-item"><div class="legend-dot blue"></div> Study block</div>
+      <div class="legend-item"><div class="legend-dot red"></div> Test/Exam</div>
+      <div class="legend-item"><div class="legend-dot purple"></div> Robocon</div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION F: SCHEDULE REVIEW ===== -->
+  <div class="footer-card">
+    <h2>🌿 Schedule Review</h2>
+    <p class="footer-context">
+      4 academic tasks are overdue — Revision CSD (2 days), Communication Presentation (1 day), PSA Homework (2 days), and Comm E-learning (2 days).
+      The Robocon Programming Phase ends May 4 and T&amp;T begins May 5 — clear your academic backlog today to enter next week with full focus on Robocon.
+    </p>
+    <div class="checklist">
+      <div class="checklist-item">
+        <input type="checkbox" id="check1">
+        <label for="check1">Reviewed today's schedule and overdue task list</label>
+      </div>
+      <div class="checklist-item">
+        <input type="checkbox" id="check2">
+        <label for="check2">Revision CSD (most urgent overdue) is confirmed and time-blocked this morning</label>
+      </div>
+      <div class="checklist-item">
+        <input type="checkbox" id="check3">
+        <label for="check3">Most important task (clear all 4 overdue tasks) is time-blocked for today</label>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<script>
+  // Persist checkbox state in memory (session only)
+  const checks = document.querySelectorAll('input[type="checkbox"]');
+  checks.forEach(cb => {
+    cb.addEventListener('change', () => {
+      if (cb.checked) {
+        cb.parentElement.querySelector('label').style.textDecoration = 'line-through';
+        cb.parentElement.querySelector('label').style.opacity = '0.6';
+      } else {
+        cb.parentElement.querySelector('label').style.textDecoration = '';
+        cb.parentElement.querySelector('label').style.opacity = '';
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
