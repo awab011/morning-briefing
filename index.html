@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Morning Briefing — Friday, 1 May 2026</title>
+<title>Morning Briefing — Saturday, 2 May 2026</title>
 <style>
   :root {
     --red: #ef4444; --red-bg: #fef2f2; --red-border: #fecaca;
@@ -12,378 +12,371 @@
     --blue: #3b82f6; --blue-bg: #eff6ff; --blue-border: #bfdbfe;
     --teal: #14b8a6; --teal-bg: #f0fdfa; --teal-border: #99f6e4;
     --purple: #8b5cf6; --purple-bg: #f5f3ff; --purple-border: #ddd6fe;
-    --indigo: #6366f1; --indigo-bg: #eef2ff; --indigo-border: #c7d2fe;
     --gray: #6b7280; --gray-bg: #f9fafb; --gray-border: #e5e7eb;
+    --indigo: #6366f1; --indigo-bg: #eef2ff; --indigo-border: #c7d2fe;
     --text: #111827; --text-2: #374151; --text-3: #6b7280;
     --surface: #ffffff; --bg: #f3f4f6;
     --radius: 12px; --radius-sm: 8px;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+  .outer { max-width: 1440px; margin: 0 auto; padding: 0 0 48px 0; }
 
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.5;
-  }
-
-  .wrapper { max-width: 1440px; margin: 0 auto; padding: 0 0 48px; }
-
-  /* === HEADER === */
+  /* ── HEADER ── */
   .header {
     background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%);
-    color: white;
-    padding: 40px 48px;
-    position: relative;
-    overflow: hidden;
+    color: white; padding: 40px 48px; position: relative; overflow: hidden;
   }
   .header::before {
-    content: '';
-    position: absolute; top: -80px; right: -80px;
-    width: 320px; height: 320px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.04);
+    content: ''; position: absolute; top: -80px; right: -80px;
+    width: 320px; height: 320px; border-radius: 50%;
+    background: rgba(255,255,255,0.04); pointer-events: none;
   }
   .header::after {
-    content: '';
-    position: absolute; bottom: -60px; right: 200px;
-    width: 200px; height: 200px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.03);
+    content: ''; position: absolute; bottom: -120px; right: 160px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: rgba(255,255,255,0.03); pointer-events: none;
   }
-  .header-top { display: flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 1; }
-  .header-left {}
-  .header-date { font-size: 0.85rem; opacity: 0.7; margin-bottom: 4px; letter-spacing: 0.05em; }
-  .header-title { font-size: 2rem; font-weight: 700; margin-bottom: 0; }
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+  .header-left { flex: 1; min-width: 0; }
+  .header-date { font-size: 13px; color: rgba(255,255,255,0.6); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 6px; }
+  .header-title { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; }
   .header-pill {
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 100px;
-    padding: 6px 14px;
-    font-size: 0.78rem;
-    opacity: 0.9;
-    white-space: nowrap;
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px; padding: 6px 14px; font-size: 12px; color: rgba(255,255,255,0.85);
+    white-space: nowrap; flex-shrink: 0; align-self: flex-start;
   }
   .header-motivation {
-    position: relative; z-index: 1;
-    margin-top: 24px;
-    border-left: 3px solid rgba(255,255,255,0.35);
+    margin-top: 20px; padding-top: 20px;
+    border-left: 3px solid rgba(255,255,255,0.3);
     padding-left: 16px;
-    font-size: 0.95rem;
-    opacity: 0.88;
+    font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.7;
     max-width: 780px;
-    line-height: 1.65;
   }
 
-  /* === MAIN GRID === */
-  .main-grid { padding: 32px 48px 0; display: flex; flex-direction: column; gap: 24px; }
+  /* ── CONTENT ── */
+  .content { padding: 32px 48px 0; display: flex; flex-direction: column; gap: 24px; }
+  .card { background: var(--surface); border-radius: var(--radius); border: 1px solid var(--gray-border); padding: 24px; }
+  .card-title { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 20px; }
 
-  .card {
-    background: var(--surface);
-    border-radius: var(--radius);
-    border: 1px solid var(--gray-border);
-    padding: 24px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  }
-  .card-title {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 18px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .card-title-meta {
-    font-size: 0.78rem;
-    font-weight: 400;
-    color: var(--text-3);
-    margin-left: auto;
-  }
+  /* ── TWO-COL GRID ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 
-  /* === SECTION B: EXAM COUNTDOWNS === */
-  .countdown-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  /* ── EXAM COUNTDOWNS ── */
+  .countdowns-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 16px;
   }
   .countdown-card {
-    border-radius: var(--radius-sm);
-    padding: 18px 16px;
-    border: 1.5px solid;
-    text-align: center;
+    border-radius: var(--radius-sm); padding: 18px 16px;
+    border: 1px solid; text-align: center;
   }
   .countdown-card.red { background: var(--red-bg); border-color: var(--red-border); }
   .countdown-card.amber { background: var(--amber-bg); border-color: var(--amber-border); }
   .countdown-card.green { background: var(--green-bg); border-color: var(--green-border); }
-  .countdown-days { font-size: 2.5rem; font-weight: 800; line-height: 1; margin-bottom: 4px; }
+  .countdown-days { font-size: 42px; font-weight: 800; line-height: 1; margin-bottom: 4px; }
   .countdown-card.red .countdown-days { color: var(--red); }
   .countdown-card.amber .countdown-days { color: var(--amber); }
   .countdown-card.green .countdown-days { color: var(--green); }
-  .countdown-label { font-size: 0.88rem; font-weight: 600; color: var(--text-2); margin-bottom: 4px; }
-  .countdown-date { font-size: 0.75rem; color: var(--text-3); margin-bottom: 10px; }
+  .countdown-label { font-size: 13px; font-weight: 600; color: var(--text-2); margin-bottom: 6px; }
+  .countdown-sub { font-size: 11px; color: var(--text-3); margin-bottom: 10px; }
   .urgency-pill {
-    display: inline-block;
-    padding: 2px 10px;
-    border-radius: 100px;
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    display: inline-block; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.06em; padding: 3px 10px; border-radius: 999px;
   }
   .urgency-pill.red { background: var(--red); color: white; }
   .urgency-pill.amber { background: var(--amber); color: white; }
   .urgency-pill.green { background: var(--green); color: white; }
-  .urgency-pill.blue { background: var(--blue); color: white; }
 
-  /* === SECTIONS C + D: TWO COLUMN === */
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-
-  /* === SECTION C: TODAY'S SCHEDULE === */
+  /* ── TODAY'S SCHEDULE ── */
   .timeline { display: flex; flex-direction: column; gap: 0; }
-  .timeline-item { display: grid; grid-template-columns: 80px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--gray-border); }
-  .timeline-item:last-of-type { border-bottom: none; }
-  .timeline-time { font-size: 0.78rem; color: var(--text-3); font-weight: 500; padding-top: 2px; }
+  .timeline-item { display: grid; grid-template-columns: 80px 1fr; gap: 12px; align-items: stretch; min-height: 48px; }
+  .timeline-time { font-size: 12px; color: var(--text-3); text-align: right; padding-top: 14px; font-variant-numeric: tabular-nums; }
+  .timeline-right { display: flex; align-items: flex-start; padding: 8px 0; position: relative; }
+  .timeline-right::before {
+    content: ''; width: 2px; background: var(--gray-border);
+    position: absolute; left: 9px; top: 0; bottom: 0; z-index: 0;
+  }
+  .timeline-dot {
+    width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+    margin-right: 12px; margin-top: 2px; z-index: 1; border: 3px solid white;
+    box-shadow: 0 0 0 2px currentColor;
+  }
+  .dot-blue { color: var(--blue); background: var(--blue); }
+  .dot-amber { color: var(--amber); background: var(--amber); }
+  .dot-red { color: var(--red); background: var(--red); }
+  .dot-purple { color: var(--purple); background: var(--purple); }
+  .dot-gray { color: var(--gray); background: #d1d5db; }
   .timeline-bar {
-    display: flex; align-items: center; gap: 10px;
-    background: var(--gray-bg);
-    border-radius: var(--radius-sm);
-    padding: 8px 12px;
-    border-left: 4px solid;
+    flex: 1; border-radius: var(--radius-sm); padding: 10px 14px;
+    font-size: 13px; font-weight: 600;
   }
-  .timeline-bar.blue { border-color: var(--blue); }
-  .timeline-bar.amber { border-color: var(--amber); }
-  .timeline-bar.red { border-color: var(--red); }
-  .timeline-bar.purple { border-color: var(--purple); }
-  .timeline-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .timeline-dot.blue { background: var(--blue); }
-  .timeline-dot.amber { background: var(--amber); }
-  .timeline-dot.red { background: var(--red); }
-  .timeline-dot.purple { background: var(--purple); }
-  .timeline-name { font-size: 0.88rem; font-weight: 600; color: var(--text-2); }
-  .schedule-empty { color: var(--text-3); font-size: 0.9rem; font-style: italic; text-align: center; padding: 20px 0; }
-  .schedule-summary {
-    margin-top: 16px;
-    background: var(--blue-bg);
-    border: 1px solid var(--blue-border);
-    border-radius: var(--radius-sm);
-    padding: 12px 16px;
-    font-size: 0.85rem;
-    color: #1d4ed8;
-    font-weight: 500;
+  .bar-blue { background: var(--blue-bg); color: #1d4ed8; border: 1px solid var(--blue-border); }
+  .bar-amber { background: var(--amber-bg); color: #b45309; border: 1px solid var(--amber-border); }
+  .bar-red { background: var(--red-bg); color: #b91c1c; border: 1px solid var(--red-border); }
+  .bar-purple { background: var(--purple-bg); color: #6d28d9; border: 1px solid var(--purple-border); }
+  .bar-gray { background: var(--gray-bg); color: var(--text-3); border: 1px solid var(--gray-border); }
+  .bar-sub { font-size: 11px; font-weight: 400; opacity: 0.75; margin-top: 2px; }
+  .study-summary {
+    margin-top: 16px; background: var(--blue-bg); border: 1px solid var(--blue-border);
+    border-radius: var(--radius-sm); padding: 12px 16px; font-size: 13px; color: #1d4ed8;
   }
 
-  /* === SECTION D: TASK SUMMARY === */
-  .task-meta { font-size: 0.82rem; color: var(--text-3); margin-bottom: 16px; }
-  .task-meta strong { color: var(--red); }
+  /* ── TASK SUMMARY ── */
+  .task-meta { font-size: 12px; color: var(--text-3); margin-bottom: 16px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .task-meta span { display: flex; align-items: center; gap: 4px; }
+  .task-meta .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
   .task-group { margin-bottom: 20px; }
-  .task-group:last-child { margin-bottom: 0; }
-  .task-group-title { font-size: 0.85rem; font-weight: 700; color: var(--text-2); margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--gray-border); }
-  .task-subsection { margin-bottom: 12px; }
-  .task-subsection-title { font-size: 0.73rem; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
-  .task-row { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid #f3f4f6; flex-wrap: wrap; }
-  .task-row:last-child { border-bottom: none; }
-  .task-name { font-size: 0.85rem; color: var(--text-2); flex: 1; min-width: 120px; }
-  .badge {
-    padding: 2px 8px; border-radius: 100px;
-    font-size: 0.68rem; font-weight: 600;
-    white-space: nowrap;
-  }
-  .badge-priority-high { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
-  .badge-priority-medium { background: var(--amber-bg); color: #92400e; border: 1px solid var(--amber-border); }
-  .badge-priority-low { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-border); }
-  .badge-priority-none { background: var(--gray-bg); color: var(--gray); border: 1px solid var(--gray-border); }
-  .badge-status-not-started { background: var(--gray-bg); color: var(--gray); border: 1px solid var(--gray-border); }
-  .badge-status-in-progress { background: var(--teal-bg); color: #0f766e; border: 1px solid var(--teal-border); }
-  .badge-status-postponed { background: var(--amber-bg); color: #92400e; border: 1px solid var(--amber-border); }
-  .all-clear { background: var(--green-bg); border: 1px solid var(--green-border); border-radius: var(--radius-sm); padding: 8px 12px; font-size: 0.82rem; color: #065f46; font-weight: 500; }
+  .task-group-title { font-size: 13px; font-weight: 700; color: var(--text-2); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--gray-border); }
+  .task-section { margin-bottom: 14px; }
+  .task-section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px; }
+  .task-row { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: var(--radius-sm); background: var(--gray-bg); border: 1px solid var(--gray-border); margin-bottom: 6px; }
+  .task-row-name { flex: 1; font-size: 13px; font-weight: 500; color: var(--text-2); min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .badge { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 999px; flex-shrink: 0; }
+  .badge-red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
+  .badge-amber { background: var(--amber-bg); color: #b45309; border: 1px solid var(--amber-border); }
+  .badge-green { background: var(--green-bg); color: #065f46; border: 1px solid var(--green-border); }
+  .badge-gray { background: var(--gray-bg); color: var(--gray); border: 1px solid var(--gray-border); }
+  .badge-teal { background: var(--teal-bg); color: #0f766e; border: 1px solid var(--teal-border); }
+  .all-clear { background: var(--green-bg); border: 1px solid var(--green-border); border-radius: var(--radius-sm); padding: 8px 12px; font-size: 12px; color: #065f46; font-weight: 600; }
 
-  /* === SECTION E: WEEKLY OVERVIEW === */
-  .week-strip { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 16px; }
+  /* ── WEEKLY OVERVIEW ── */
+  .week-strip { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
   .day-cell {
-    border-radius: var(--radius-sm);
-    border: 1.5px solid var(--gray-border);
-    padding: 12px 8px;
-    text-align: center;
-    background: var(--surface);
+    border-radius: var(--radius-sm); padding: 12px 8px; text-align: center;
+    border: 1px solid var(--gray-border); background: var(--gray-bg);
+    transition: transform 0.1s;
   }
-  .day-cell.today { border-color: var(--indigo); background: var(--indigo-bg); }
+  .day-cell.today { border: 2px solid var(--indigo); background: var(--indigo-bg); }
   .day-cell.past { opacity: 0.55; }
-  .day-name { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-3); margin-bottom: 4px; }
-  .day-cell.today .day-name { color: var(--indigo); }
-  .day-num { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 6px; }
-  .day-cell.today .day-num { color: var(--indigo); }
-  .day-dots { display: flex; justify-content: center; gap: 3px; flex-wrap: wrap; margin-bottom: 4px; min-height: 12px; }
-  .day-dot { width: 7px; height: 7px; border-radius: 50%; }
-  .day-dot.amber { background: var(--amber); }
-  .day-dot.blue { background: var(--blue); }
-  .day-dot.red { background: var(--red); }
-  .day-dot.purple { background: var(--purple); }
-  .day-hours { font-size: 0.68rem; color: var(--text-3); }
+  .day-cell.future { opacity: 0.85; }
+  .day-name { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); margin-bottom: 4px; }
+  .day-date { font-size: 18px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+  .day-cell.today .day-name, .day-cell.today .day-date { color: var(--indigo); }
+  .day-dots { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; margin-bottom: 6px; min-height: 16px; }
+  .week-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .day-hours { font-size: 11px; color: var(--text-3); }
   .week-summary {
-    background: var(--purple-bg);
-    border: 1px solid var(--purple-border);
-    border-radius: var(--radius-sm);
-    padding: 12px 16px;
-    font-size: 0.85rem;
-    color: #5b21b6;
-    margin-bottom: 12px;
+    margin-top: 16px; background: var(--purple-bg); border: 1px solid var(--purple-border);
+    border-radius: var(--radius-sm); padding: 12px 16px;
+    font-size: 13px; color: #5b21b6; display: flex; align-items: center; gap: 8px;
   }
-  .week-legend { display: flex; gap: 16px; flex-wrap: wrap; }
-  .legend-item { display: flex; align-items: center; gap: 5px; font-size: 0.75rem; color: var(--text-3); }
-  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .week-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-3); }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
 
-  /* === SECTION F: SCHEDULE REVIEW === */
-  .review-card {
+  /* ── SCHEDULE REVIEW ── */
+  .review {
     background: linear-gradient(135deg, #ecfdf5, #d1fae5);
-    border: 1px solid #6ee7b7;
-    border-radius: var(--radius);
-    padding: 24px 28px;
+    border: 1px solid var(--green-border); border-radius: var(--radius);
+    padding: 24px 48px;
+    margin: 0 48px;
   }
-  .review-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: #065f46; }
-  .review-context { font-size: 0.88rem; color: #047857; margin-bottom: 18px; line-height: 1.6; }
-  .checkbox-list { display: flex; flex-direction: column; gap: 10px; }
-  .checkbox-item { display: flex; align-items: center; gap: 10px; }
-  .checkbox-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--green); cursor: pointer; }
-  .checkbox-item label { font-size: 0.88rem; color: #065f46; cursor: pointer; }
+  .review-title { font-size: 16px; font-weight: 700; color: #064e3b; margin-bottom: 8px; }
+  .review-sub { font-size: 13px; color: #065f46; margin-bottom: 20px; line-height: 1.6; }
+  .checklist { display: flex; flex-direction: column; gap: 10px; }
+  .check-item { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+  .check-item input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--green); cursor: pointer; flex-shrink: 0; }
+  .check-item label { font-size: 14px; color: var(--text-2); cursor: pointer; font-weight: 500; }
 
-  /* === RESPONSIVE === */
+  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .two-col { grid-template-columns: 1fr; }
-    .header { padding: 28px 24px; }
-    .main-grid { padding: 20px 20px 0; }
+    .week-strip { grid-template-columns: repeat(4, 1fr); }
+    .content { padding: 20px 20px 0; }
+    .review { margin: 0 20px; padding: 20px; }
   }
   @media (max-width: 600px) {
-    .header { padding: 20px 16px; }
-    .header-title { font-size: 1.4rem; }
-    .main-grid { padding: 16px 12px 0; gap: 16px; }
-    .week-strip { grid-template-columns: repeat(4, 1fr); }
+    .header { padding: 24px 20px; }
+    .header-title { font-size: 22px; }
+    .content { padding: 16px 12px 0; gap: 16px; }
     .card { padding: 16px; }
+    .week-strip { grid-template-columns: repeat(4, 1fr); }
+    .review { margin: 0 12px; padding: 16px; }
   }
 </style>
 </head>
 <body>
-<div class="wrapper">
+<div class="outer">
 
-  <!-- SECTION A: HEADER -->
+  <!-- ── HEADER ── -->
   <div class="header">
     <div class="header-top">
       <div class="header-left">
-        <div class="header-date">🌅 &nbsp; Friday, 1 May 2026 &nbsp;·&nbsp; Malaysia Time (UTC+8)</div>
-        <h1 class="header-title">Good morning, Koala.</h1>
+        <div class="header-date">🌅 &nbsp;Saturday, 2 May 2026 &nbsp;·&nbsp; Malaysia Time (UTC+8)</div>
+        <div class="header-title">Good morning, Koala.</div>
       </div>
       <div class="header-pill">Generated 7:00 AM · MYT</div>
     </div>
     <div class="header-motivation">
-      You cleared every overdue academic task from last week — that's a genuine milestone. Now the final sprint begins: today is the <strong>last Friday of the Programming Phase</strong>, with Robocon T&amp;T launching in just 4 days on Tuesday. Pour focused energy into Arena Detection Code today, and head into the weekend knowing the technical foundation is solid.
+      The Programming Phase wraps up in just 2 days — every line of code you lock in now is one less scramble before T&amp;T kicks off on Tuesday. Your Arena Detection is actively in progress and that high-priority work deserves your sharpest Saturday hours. Push hard today so the Testing &amp; Tuning phase starts from a position of strength, not catch-up.
     </div>
   </div>
 
-  <div class="main-grid">
+  <div class="content">
 
-    <!-- SECTION B: EXAM / MILESTONE COUNTDOWNS -->
+    <!-- ── EXAM / MILESTONE COUNTDOWNS ── -->
     <div class="card">
-      <div class="card-title">🎯 Upcoming Milestones & Countdowns</div>
-      <div class="countdown-grid">
+      <div class="card-title">🎯 Upcoming Milestones &amp; Demos</div>
+      <div class="countdowns-grid">
 
-        <div class="countdown-card amber">
-          <div class="countdown-days">4</div>
-          <div class="countdown-label">T&amp;T Phase Begins</div>
-          <div class="countdown-date">Tue, 5 May 2026</div>
-          <span class="urgency-pill amber">THIS WEEK</span>
-        </div>
-
-        <div class="countdown-card amber">
-          <div class="countdown-days">16</div>
+        <div class="countdown-card green">
+          <div class="countdown-days">15</div>
           <div class="countdown-label">DEMO 5</div>
-          <div class="countdown-date">Sun, 17 May 2026</div>
-          <span class="urgency-pill amber">COMING UP</span>
+          <div class="countdown-sub">Sun, 17 May 2026</div>
+          <span class="urgency-pill green">ON TRACK</span>
         </div>
 
         <div class="countdown-card green">
-          <div class="countdown-days">114</div>
+          <div class="countdown-days">3</div>
+          <div class="countdown-label">T&amp;T Phase Starts</div>
+          <div class="countdown-sub">Tue, 5 May 2026 · Robocon</div>
+          <span class="urgency-pill amber">THIS WEEK</span>
+        </div>
+
+        <div class="countdown-card green">
+          <div class="countdown-days">2</div>
+          <div class="countdown-label">Programming Phase End</div>
+          <div class="countdown-sub">Mon, 4 May 2026 · Robocon</div>
+          <span class="urgency-pill amber">THIS WEEK</span>
+        </div>
+
+        <div class="countdown-card green">
+          <div class="countdown-days">113</div>
           <div class="countdown-label">ABU ROBOCON 2026</div>
-          <div class="countdown-date">Sun, 23 Aug 2026</div>
+          <div class="countdown-sub">Sun, 23 Aug 2026 · Competition</div>
           <span class="urgency-pill green">ON TRACK</span>
         </div>
 
       </div>
     </div>
 
-    <!-- SECTIONS C + D: TWO COLUMN -->
+    <!-- ── TWO-COL: SCHEDULE + TASKS ── -->
     <div class="two-col">
 
-      <!-- SECTION C: TODAY'S SCHEDULE -->
+      <!-- TODAY'S SCHEDULE -->
       <div class="card">
-        <div class="card-title">📅 Today's Schedule <span class="card-title-meta">Friday, 1 May</span></div>
-        <div class="schedule-empty">No fixed calendar events today — self-directed study &amp; Robocon day.</div>
-        <div class="schedule-summary">
-          📚 <strong>No study hours blocked</strong> · Free schedule — use it intentionally. Last Friday of Programming Phase.
+        <div class="card-title">📅 Today's Schedule — Saturday 2 May</div>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-time">All day</div>
+            <div class="timeline-right">
+              <div class="timeline-dot dot-purple"></div>
+              <div class="timeline-bar bar-purple">
+                Programming Phase (ongoing)
+                <div class="bar-sub">RBC · wraps up Mon 4 May</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-time">Active</div>
+            <div class="timeline-right">
+              <div class="timeline-dot dot-purple"></div>
+              <div class="timeline-bar bar-purple">
+                Arena Detection Code
+                <div class="bar-sub">🛠️ DevOps - RBC · In progress · High priority</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-time">No class</div>
+            <div class="timeline-right">
+              <div class="timeline-dot dot-gray"></div>
+              <div class="timeline-bar bar-gray">
+                Weekend — no Uni schedule
+                <div class="bar-sub">Free to focus on Robocon work</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="study-summary">
+          📚 0h formal study blocks today &nbsp;·&nbsp; <strong>Robocon sprint day</strong> — Programming Phase deadline in 2 days
         </div>
       </div>
 
-      <!-- SECTION D: TASK SUMMARY -->
+      <!-- TASK SUMMARY -->
       <div class="card">
         <div class="card-title">✅ Task Summary</div>
         <div class="task-meta">
-          <strong>0 overdue</strong> &nbsp;·&nbsp; 0 due today &nbsp;·&nbsp; 0 due this week &nbsp;·&nbsp; 6 active (no date)
+          <span><span class="dot" style="background:var(--red)"></span> 0 overdue</span>
+          <span><span class="dot" style="background:var(--amber)"></span> 0 due today</span>
+          <span><span class="dot" style="background:var(--blue)"></span> 0 due this week</span>
+          <span><span class="dot" style="background:var(--gray)"></span> 6 active (no date)</span>
         </div>
 
-        <!-- Studies & Academics -->
+        <!-- STUDIES -->
         <div class="task-group">
           <div class="task-group-title">📚 Studies &amp; Academics</div>
 
-          <div class="task-subsection">
-            <div class="task-subsection-title">Overdue</div>
-            <div class="all-clear">✓ All clear — no overdue academic tasks!</div>
+          <div class="task-section">
+            <div class="task-section-label">Overdue</div>
+            <div class="all-clear">✓ All clear</div>
           </div>
-
-          <div class="task-subsection">
-            <div class="task-subsection-title">Active (No Date)</div>
+          <div class="task-section">
+            <div class="task-section-label">Due Today</div>
+            <div class="all-clear">✓ All clear</div>
+          </div>
+          <div class="task-section">
+            <div class="task-section-label">Due This Week</div>
+            <div class="all-clear">✓ All clear</div>
+          </div>
+          <div class="task-section">
+            <div class="task-section-label">Active (No Date)</div>
             <div class="task-row">
-              <span class="task-name">English assignment</span>
-              <span class="badge badge-priority-high">High</span>
-              <span class="badge badge-status-not-started">Not started</span>
+              <div class="task-row-name">English assignment</div>
+              <span class="badge badge-red">High</span>
+              <span class="badge badge-gray">Not started</span>
             </div>
             <div class="task-row">
-              <span class="task-name">Image processing course</span>
-              <span class="badge badge-priority-low">Low</span>
-              <span class="badge badge-status-postponed">Postponed</span>
+              <div class="task-row-name">Entrepreneurship video</div>
+              <span class="badge badge-gray">—</span>
+              <span class="badge badge-amber">Postponed</span>
             </div>
             <div class="task-row">
-              <span class="task-name">Entrepreneurship video</span>
-              <span class="badge badge-priority-none">–</span>
-              <span class="badge badge-status-postponed">Postponed</span>
+              <div class="task-row-name">Image processing course</div>
+              <span class="badge badge-green">Low</span>
+              <span class="badge badge-amber">Postponed</span>
             </div>
           </div>
         </div>
 
-        <!-- Robocon R2 -->
+        <!-- ROBOCON -->
         <div class="task-group">
           <div class="task-group-title">🤖 Robocon R2</div>
 
-          <div class="task-subsection">
-            <div class="task-subsection-title">Overdue</div>
+          <div class="task-section">
+            <div class="task-section-label">Overdue</div>
             <div class="all-clear">✓ All clear</div>
           </div>
-
-          <div class="task-subsection">
-            <div class="task-subsection-title">Active (No Date)</div>
+          <div class="task-section">
+            <div class="task-section-label">Due Today</div>
+            <div class="all-clear">✓ All clear</div>
+          </div>
+          <div class="task-section">
+            <div class="task-section-label">Due This Week</div>
+            <div class="all-clear">✓ All clear</div>
+          </div>
+          <div class="task-section">
+            <div class="task-section-label">Active (No Date)</div>
             <div class="task-row">
-              <span class="task-name">Arena Detection Code</span>
-              <span class="badge badge-priority-high">High</span>
-              <span class="badge badge-status-in-progress">In progress</span>
+              <div class="task-row-name">Arena Detection Code</div>
+              <span class="badge badge-red">High</span>
+              <span class="badge badge-teal">In progress</span>
             </div>
             <div class="task-row">
-              <span class="task-name">Changing code into HSM</span>
-              <span class="badge badge-priority-low">Low</span>
-              <span class="badge badge-status-postponed">Postponed</span>
+              <div class="task-row-name">Lidar_Camera calibration</div>
+              <span class="badge badge-green">Low</span>
+              <span class="badge badge-amber">Postponed</span>
             </div>
             <div class="task-row">
-              <span class="task-name">Lidar_Camera calibration</span>
-              <span class="badge badge-priority-low">Low</span>
-              <span class="badge badge-status-postponed">Postponed</span>
+              <div class="task-row-name">Changing code into HSM</div>
+              <span class="badge badge-green">Low</span>
+              <span class="badge badge-amber">Postponed</span>
             </div>
           </div>
         </div>
@@ -391,98 +384,119 @@
       </div>
     </div>
 
-    <!-- SECTION E: WEEKLY OVERVIEW -->
+    <!-- ── WEEKLY OVERVIEW ── -->
     <div class="card">
-      <div class="card-title">📆 Week at a Glance <span class="card-title-meta">28 Apr – 3 May 2026</span></div>
+      <div class="card-title">📆 Weekly Overview — 27 Apr – 3 May 2026</div>
       <div class="week-strip">
-        <!-- Mon Apr 27 -->
+
+        <!-- Monday Apr 27 -->
         <div class="day-cell past">
           <div class="day-name">Mon</div>
-          <div class="day-num">27</div>
+          <div class="day-date">27</div>
           <div class="day-dots"></div>
-          <div class="day-hours">–</div>
+          <div class="day-hours">—</div>
         </div>
-        <!-- Tue Apr 28 -->
+
+        <!-- Tuesday Apr 28 -->
         <div class="day-cell past">
           <div class="day-name">Tue</div>
-          <div class="day-num">28</div>
-          <div class="day-dots"></div>
-          <div class="day-hours">–</div>
+          <div class="day-date">28</div>
+          <div class="day-dots">
+            <div class="week-dot" style="background:var(--purple)"></div>
+          </div>
+          <div class="day-hours">RBC work</div>
         </div>
-        <!-- Wed Apr 29 -->
+
+        <!-- Wednesday Apr 29 -->
         <div class="day-cell past">
           <div class="day-name">Wed</div>
-          <div class="day-num">29</div>
-          <div class="day-dots"></div>
-          <div class="day-hours">–</div>
+          <div class="day-date">29</div>
+          <div class="day-dots">
+            <div class="week-dot" style="background:var(--purple)"></div>
+          </div>
+          <div class="day-hours">RBC work</div>
         </div>
-        <!-- Thu Apr 30 -->
+
+        <!-- Thursday Apr 30 -->
         <div class="day-cell past">
           <div class="day-name">Thu</div>
-          <div class="day-num">30</div>
-          <div class="day-dots"></div>
-          <div class="day-hours">–</div>
-        </div>
-        <!-- Fri May 1 TODAY -->
-        <div class="day-cell today">
-          <div class="day-name">Fri</div>
-          <div class="day-num">1</div>
+          <div class="day-date">30</div>
           <div class="day-dots">
-            <div class="day-dot purple"></div>
+            <div class="week-dot" style="background:var(--purple)"></div>
           </div>
-          <div class="day-hours">Today</div>
+          <div class="day-hours">RBC work</div>
         </div>
-        <!-- Sat May 2 -->
-        <div class="day-cell">
-          <div class="day-name">Sat</div>
-          <div class="day-num">2</div>
-          <div class="day-dots"></div>
-          <div class="day-hours">–</div>
+
+        <!-- Friday May 1 -->
+        <div class="day-cell past">
+          <div class="day-name">Fri</div>
+          <div class="day-date">1</div>
+          <div class="day-dots">
+            <div class="week-dot" style="background:var(--purple)"></div>
+          </div>
+          <div class="day-hours">RBC work</div>
         </div>
-        <!-- Sun May 3 -->
-        <div class="day-cell">
+
+        <!-- Saturday May 2 — TODAY -->
+        <div class="day-cell today">
+          <div class="day-name">Sat · Today</div>
+          <div class="day-date">2</div>
+          <div class="day-dots">
+            <div class="week-dot" style="background:var(--purple)"></div>
+          </div>
+          <div class="day-hours">Sprint day</div>
+        </div>
+
+        <!-- Sunday May 3 -->
+        <div class="day-cell future">
           <div class="day-name">Sun</div>
-          <div class="day-num">3</div>
-          <div class="day-dots"></div>
-          <div class="day-hours">–</div>
+          <div class="day-date">3</div>
+          <div class="day-dots">
+            <div class="week-dot" style="background:var(--purple)"></div>
+          </div>
+          <div class="day-hours">RBC work</div>
         </div>
+
       </div>
 
       <div class="week-summary">
-        🤖 <strong>Robocon Programming Phase ends Monday 4 May</strong> — T&amp;T launches Tuesday 5 May. Use this weekend to lock down Arena Detection Code before the phase transitions.
+        🔮 <strong>Week wrap-up:</strong> Programming Phase dominates this week — Robocon sprint through to Mon 4 May, then T&amp;T launches Tue 5 May. English assignment (High priority) still needs to be time-blocked!
       </div>
 
       <div class="week-legend">
-        <div class="legend-item"><div class="legend-dot amber"></div> Class</div>
-        <div class="legend-item"><div class="legend-dot blue"></div> Study</div>
-        <div class="legend-item"><div class="legend-dot red"></div> Test / Exam</div>
-        <div class="legend-item"><div class="legend-dot purple"></div> Robocon</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div> Class (Uni)</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div> Study Block</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div> Test / Exam</div>
+        <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div> Robocon (RBC)</div>
       </div>
     </div>
 
-    <!-- SECTION F: SCHEDULE REVIEW -->
-    <div class="review-card">
+  </div><!-- /content -->
+
+  <!-- ── SCHEDULE REVIEW ── -->
+  <div style="padding: 24px 0 0;">
+    <div class="review">
       <div class="review-title">🌿 Schedule Review</div>
-      <div class="review-context">
-        Today is the last Friday before Robocon T&amp;T begins. Arena Detection Code is actively in progress — push for a significant milestone today. English assignment is also pending with High priority and no due date set; consider time-blocking it this weekend.
+      <div class="review-sub">
+        The Programming Phase deadline is Monday — treat today and tomorrow as your last sprint window before T&amp;T begins. The English assignment (High priority, not started) has no due date set yet; block time for it before the week is out.
       </div>
-      <div class="checkbox-list">
-        <div class="checkbox-item">
-          <input type="checkbox" id="cb1">
-          <label for="cb1">Reviewed today's schedule</label>
-        </div>
-        <div class="checkbox-item">
-          <input type="checkbox" id="cb2">
-          <label for="cb2">Arena Detection Code session is confirmed for today</label>
-        </div>
-        <div class="checkbox-item">
-          <input type="checkbox" id="cb3">
-          <label for="cb3">Most important task is time-blocked on the calendar</label>
-        </div>
+      <div class="checklist">
+        <label class="check-item">
+          <input type="checkbox" id="c1">
+          <label for="c1">Reviewed today's schedule</label>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" id="c2">
+          <label for="c2">Arena Detection Code sprint session is planned for today</label>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" id="c3">
+          <label for="c3">Most important task (Arena Detection) is time-blocked</label>
+        </label>
       </div>
     </div>
+  </div>
 
-  </div><!-- end main-grid -->
-</div><!-- end wrapper -->
+</div><!-- /outer -->
 </body>
 </html>
