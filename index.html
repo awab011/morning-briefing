@@ -17,7 +17,7 @@
     /* ── Header ── */
     .header {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #fff;
+      color: white;
       padding: 48px 32px 40px;
       text-align: center;
     }
@@ -25,8 +25,8 @@
       font-size: 13px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      opacity: 0.8;
-      margin-bottom: 8px;
+      opacity: 0.75;
+      margin-bottom: 10px;
     }
     .header h1 {
       font-size: clamp(28px, 5vw, 52px);
@@ -66,8 +66,9 @@
       margin-bottom: 16px;
       margin-top: 36px;
     }
+    .section { margin-bottom: 40px; }
 
-    /* ── Cards ── */
+    /* CARDS */
     .card {
       background: #fff;
       border-radius: 14px;
@@ -124,13 +125,16 @@
       gap: 10px;
     }
     .schedule-item {
+      background: white;
+      border-radius: 12px;
+      padding: 16px 20px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.05);
       display: flex;
       align-items: center;
       gap: 14px;
       padding: 10px 0;
       border-bottom: 1px solid #f0f2f7;
     }
-    .schedule-item:last-child { border-bottom: none; }
     .schedule-time {
       font-size: 13px;
       font-weight: 600;
@@ -153,9 +157,10 @@
       font-size: 15px;
       padding: 10px 0;
     }
+    .empty-state .empty-icon { font-size: 32px; margin-bottom: 10px; }
 
-    /* ── Tasks ── */
-    .tasks-grid {
+    /* TASK SUMMARY */
+    .task-columns {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
@@ -215,8 +220,9 @@
       gap: 8px;
       overflow-x: auto;
     }
+    @media (max-width: 560px) { .week-strip { grid-template-columns: repeat(4, 1fr); } }
     .day-box {
-      background: #fff;
+      background: white;
       border-radius: 12px;
       padding: 14px 8px;
       text-align: center;
